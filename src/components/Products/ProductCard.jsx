@@ -1,5 +1,7 @@
 import React from 'react'
 import Button from '../Shared/Button';
+import { useDispatch } from 'react-redux';
+import { incrementByAmount } from '../../store/carts_slicer';
 
 
 
@@ -11,6 +13,7 @@ const ProductCard = ({ data }) => {
       </div>
     );
   }
+  const dispatch = useDispatch()
 
   return (
     <div className="mb-10">
@@ -36,6 +39,9 @@ const ProductCard = ({ data }) => {
               {/* Hover Button */}
               <div className="hidden group-hover:flex absolute inset-0 items-center justify-center bg-black/30 backdrop-blur-sm transition-all duration-300 rounded-3xl">
                 <button 
+                onClick={() => {
+                  dispatch(incrementByAmount(1))
+                }}
                   className="bg-primary text-white px-6 py-2 rounded-md uppercase hover:bg-primary/90 transition-colors"
                 >
                   Add to Cart

@@ -3,6 +3,7 @@ import { IoMdSearch } from "react-icons/io";
 import { FaCaretDown, FaCartShopping } from "react-icons/fa6";
 import Darkmode from './Darkmode';
 import { FaUserAlt } from "react-icons/fa";
+import { useSelector } from 'react-redux';
 
 const MenuLinks = [
     { id: 1, name: "home", link: "/#" },
@@ -18,8 +19,10 @@ const DropdownLinks = [
 ]
 
 const Navbar = ({ handleRegisterPopup }) => {
+    const carts = useSelector(state => state.cart.value)
+
     return (
-        <div className='bg-white dark:bg-gray-900 dark:text-white duration-200 relative z-40'>
+        <div className='bg-white  dark:bg-gray-900 dark:text-white duration-200  z-40'>
             <div className='py-4'>
                 <div className="container flex justify-between items-center">
                     
@@ -72,7 +75,7 @@ const Navbar = ({ handleRegisterPopup }) => {
                         </div>
                         <button className='relative p-3'>
                             <FaCartShopping className='text-xl text-gray-600 dark:text-gray-400' />
-                            <div className='w-4 h-4 bg-red-500 text-white rounded-full absolute top-0 right-0 flex items-center justify-center text-xs'>4</div>
+                            <div className='w-4 h-4 bg-red-500 text-white rounded-full absolute top-0 right-0 flex items-center justify-center text-xs'>{carts}</div>
                         </button>
                         <div>
                             <Darkmode />

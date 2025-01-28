@@ -14,6 +14,8 @@ import Footer from './components/Footer/Footer.jsx';
 import Popup from './components/Popup/Popup.jsx';
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Carts } from './carts.jsx';
 
 
 
@@ -61,8 +63,10 @@ const App = () => {
 
 
   return (
-    <div className='bg-white dark:bg-gray-900 dark:text-white duration-200 overflow-hidden'>
-      <Navbar handleRegisterPopup={handleRegisterPopup}/>
+    <div className='bg-white dark:bg-gray-900 dark:text-white duration-200 '>
+      <div className='sticky top-0 z-[1000]'>
+         <Navbar handleRegisterPopup={handleRegisterPopup}/>
+      </div>
       <Hero handleRegisterPopup={handleRegisterPopup}/>
       <Category />
       <Category2 />
@@ -75,6 +79,11 @@ const App = () => {
       <Footer />
       <Popup RegisterPopup={RegisterPopup}
       handleRegisterPopup={handleRegisterPopup}/>
+      <BrowserRouter>
+        <Routes>
+          <Route path='cards' element={<Carts />}></Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   )
 }
